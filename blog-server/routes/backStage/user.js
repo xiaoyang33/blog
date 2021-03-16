@@ -36,22 +36,27 @@ router.post('/login',async (ctx)=>{
     if(!data){
         ctx.body = {
             code:100400,
-            msg:'账号不存在'
+            data:{
+                msg:'账号不存在'
+            }
         }
     }else if(data.password !== password){
         ctx.body = {
             code:100400,
-            msg:'密码错误'
+            data:{
+                msg:'密码错误'
+            }
         }
     }else{
         let token = await jwt.sign({username,edit:data.edit,timeout:getTime()},SIGNATURE)
         // console.log(token);
-        let ver = await jwt.verify(token,SIGNATURE)
+        // let ver = await jwt.verify(token,SIGNATURE)
         ctx.body = {
             code:200,
-            msg:'登陆成功',
-            token,
-            ver
+            data:{
+                msg:'登陆成功',
+                token,
+            }
         }
         
     }

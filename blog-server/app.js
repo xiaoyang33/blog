@@ -38,4 +38,5 @@ app.use(index.routes(), index.allowedMethods())
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
+console.log('localhost:25371')
 module.exports = app

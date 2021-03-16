@@ -1,5 +1,12 @@
 const router = require('koa-router')()
+/* 
+  返回信息格式
+  ctx.body = {
+    code:状态码,
+    data:响应数据
+  }
 
+*/
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
