@@ -21,7 +21,7 @@
                 <div class="tips" v-if="rules.password">密码不能为空</div>
             </div>
             <div class="item">
-                <Button type="primary" @click="handleClicl">登录</Button>
+                <el-button type="primary" @click="handleClicl">登录</el-button>
             </div>
         </div>
     </div>
@@ -33,8 +33,8 @@ export default {
     data(){
         return {
             userInfo:{
-                username:'',
-                password:''
+                username:'123123',
+                password:'123123'
             },
             rules:{
                 username:false,
@@ -49,9 +49,9 @@ export default {
             login(this.userInfo).then(res=>{
                 console.log(res);
                 if(res.data.token){
-                    this.$Message.success({
-                        content:res.data.msg,
-                        duration:0.7,
+                    this.$message.success({
+                        message:res.data.msg,
+                        duration:700,
                         onClose:()=>{
                             this.setStorage('token',res.data.token)
                             this.$router.push('/index')
@@ -167,7 +167,7 @@ $width:320px;
                     bottom: 0 ;
                 }
             }
-            & /deep/ .ivu-btn{
+            & /deep/ .el-button{
                 width: 100px;
             } 
 
