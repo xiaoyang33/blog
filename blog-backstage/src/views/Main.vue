@@ -85,6 +85,7 @@ $headerHeight: 80px;
 .page {
     height: 100vh;
     width: 100vw;
+    background: #efe;
 }
 .el-aside {
     background: #788269;

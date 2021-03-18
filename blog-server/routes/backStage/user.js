@@ -1,13 +1,17 @@
 const router = require('koa-router')()
 const jwt = require('jsonwebtoken')
-const Roles = require('../../mongoose/backStage/Roles')
 const { SIGNATURE } = require('../emnu')
-
+const Roles = require('../../mongoose/backStage/Roles')
 function getTime(day = 1) {
     let data = new Date().getTime()
     return data + 1000 * 60 * 60 * 24 * day
 }
-
+// let Roles = null
+// router.use(async (ctx,next)=>{
+//     Roles =  require('../../mongoose/backStage/Roles')
+//     console.log(1)
+//     next()
+// })
 router.post('/register', async (ctx)=>{
     let { username , password } = ctx.request.body
     console.log(username,password)
@@ -25,14 +29,17 @@ router.post('/register', async (ctx)=>{
         await user.save()
          ctx.body = {
             code:200,
-            msg:'注册成功'
+            data:{
+                msg:'注册成功'
+            }
         }
     }
 })
 
 router.post('/login',async (ctx)=>{
     let { username , password } = ctx.request.body
-    let data = await Roles.findOne({username})
+    let  data = await Roles.findOne({username})
+    console.log(2,data)
     if(!data){
         ctx.body = {
             code:100400,
@@ -40,7 +47,7 @@ router.post('/login',async (ctx)=>{
                 msg:'账号不存在'
             }
         }
-    }else if(data.password !== password){
+    }else if( data && data.password !== password){
         ctx.body = {
             code:100400,
             data:{
@@ -58,7 +65,6 @@ router.post('/login',async (ctx)=>{
                 token,
             }
         }
-        
     }
 })
 

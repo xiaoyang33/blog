@@ -4,20 +4,23 @@
 const myMongo = (collections)=>{
     const mongoose = require('mongoose')
 
-    const DB_URL = 'mongodb://139.196.253.225:27017/'
+    const DB_URL = 'mongodb://139.196.253.225:27017/blogServer'
 
-    mongoose.connect(DB_URL + collections)
+    let db = mongoose.createConnection(DB_URL)
 
-    let db = mongoose.connection
+    // let db = mongoose.connection
 
-    db.on('open',()=>{
+    db.once('open',()=>{
         console.log('数据库链接成功')
     })
 
     db.on('error',(err)=>{
         console.log('数据库链接出错')
     })
-    return mongoose
+    return {
+        mongoose,
+        db
+    }
 }
 
 module.exports = myMongo
