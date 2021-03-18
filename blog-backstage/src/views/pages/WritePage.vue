@@ -16,6 +16,7 @@ import ImageResize from "quill-image-resize-module";
 import Quill from 'quill'
 import { quillEditor } from "vue-quill-editor";
 Quill.register("modules/imageResize", ImageResize);
+Quill.register("modules/imageResize", ImageResize);
 export default {
     components: {
         quillEditor,
