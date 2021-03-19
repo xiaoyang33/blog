@@ -1,6 +1,8 @@
 
 const router = require('koa-router')()
 const ArticleOperation = require('../../mongoose/backStage/Operations')
+const upload = require('../../utils/upLoadImg')
+const URL = 'http://localhost:25371'   //测试地址
 // 保存文章
 router.post('/saveArticle',async (ctx)=>{
     let article = new ArticleOperation({
@@ -26,14 +28,43 @@ router.post('/saveArticle',async (ctx)=>{
         }
     }
 })
+
+// 上传图片多张
+router.post('/upLoadImgMany',upload.array('img'), async (ctx)=>{
+    const files = ctx.req.files
+    // console.log(files)
+    ctx.body = {
+        code:200,
+        data:{
+            imgUrl:`${URL}/images/blog-thumbnail/${files[0].filename}`
+        }
+    }
+})
+
+// 二进制刘处理 上传单张图片
+router.post('/upLoadImg',upload.single('img'), async (ctx)=>{
+    const file = ctx.req.file
+    // console.log(file)
+    ctx.body = {
+        code:200,
+        data:{
+            imgUrl:`${URL}/images/blog-thumbnail/${file.filename}`
+        }
+    }
+})
+
+
+
+
+
+
+
+
 // 删除文章
 router.put('/deleteArticle',async (ctx)=>{
-
     // let data = await articleOperation.find({})
-    let obj = {articleTitle:'Xiaosaab'}
-    let data = await ArticleOperation.deleteMany(obj)
+    let data = await ArticleOperation.deleteMany({articleTitle:'Xiaosaab'})
     console.log(data);
-    ctx.body = 'hhhhh'
 })
 
 module.exports = router

@@ -1,8 +1,8 @@
 
 import axios from 'axios'
 
-// const baseURL = '/api'
-const baseURL = 'http://192.168.1.6:25371'
+const baseURL = '/api'
+// const baseURL = 'http://192.168.1.6:25371'
 
 export default function(options){
 

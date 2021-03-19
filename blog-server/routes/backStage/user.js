@@ -14,7 +14,7 @@ function getTime(day = 1) {
 // })
 router.post('/register', async (ctx)=>{
     let { username , password } = ctx.request.body
-    console.log(username,password)
+    // console.log(username,password)
     let data = await Roles.findOne({username})
     if(data && data._id){
         ctx.body = {

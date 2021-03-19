@@ -26,14 +26,32 @@
                     </el-input>
                 </div>
             </el-col>
+            <el-col :span="8">
+                <div class="demo-input-suffix">
+                    <h3>分类:</h3>
+                     <el-select v-model="value" placeholder="请选择">
+                        <el-option
+                        v-for="item in pageCategoryEnum"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+            </el-col>
         </el-row>
         <div class="upload-img">
             <h3>文章缩略图:</h3>
             <el-upload
                 class="avatar-uploader"
-                action="https://jsonplaceholder.typicode.com/posts/"
+                action="/api/operation/upLoadImg"
+                ref="upload"
+                auto-upload
+                :before-upload="before"
+                :on-success="upSuccess"
+                name="img"
             >
-                <!-- <img v-if="imageUrl" :src="imageUrl" class="avatar" /> -->
+                <img v-if="content.thumbnail" :src="content.thumbnail" class="avatar" />
                 <i class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
         </div>
@@ -50,6 +68,7 @@ import Quill from "quill";
 import { quillEditor } from "vue-quill-editor";
 Quill.register("modules/imageResize", ImageResize);
 import operation from "@/api/operations";
+import pageCategoryEnum from '@/enums/pageCategoryEnum'
 export default {
     components: {
         quillEditor,
@@ -60,6 +79,8 @@ export default {
                 articleTitle: "",
                 articleContent: "",
                 tag: "",
+                thumbnail:'',
+                classIfy:''
             },
             editorOption: {
                 placeholder: "文章内容........",
@@ -89,9 +110,30 @@ export default {
         };
     },
     methods: {
+        // 上传多图片
         handleClick() {
-            console.log(this.content);
+             // 获取到 上传的所有文件，它是一个数组
+            const fileArray = this.$refs.upload.uploadFiles;
+            // 实例化FormData对象
+            const fd = new FormData();
+            // 遍历文件数组，将所有文件存入fd中
+            for(let i = 0; i < fileArray.length; i++) {
+                // 在这里数组每一项的.raw才是你需要的文件，有疑惑的可以打印到控制台看一下就清楚了
+                fd.append('img', fileArray[i].raw);
+                console.log(fileArray,fd);
+            }
+            operation.upLoadImg(fd).then(res=>{
+                console.log(res)
+                this.thumImg = res.data.imgUrl
+            })
         },
+        upSuccess(res){
+            console.log(res)
+             this.content.thumbnail = res.data.imgUrl
+        },
+        before(file){
+            console.log(file)
+        }
     },
 };
 </script>
