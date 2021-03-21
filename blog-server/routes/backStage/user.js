@@ -2,16 +2,12 @@ const router = require('koa-router')()
 const jwt = require('jsonwebtoken')
 const { SIGNATURE } = require('../emnu')
 const Roles = require('../../mongoose/backStage/Roles')
+const { logger } = require('../../utils/koa4')
 function getTime(day = 1) {
     let data = new Date().getTime()
     return data + 1000 * 60 * 60 * 24 * day
 }
-// let Roles = null
-// router.use(async (ctx,next)=>{
-//     Roles =  require('../../mongoose/backStage/Roles')
-//     console.log(1)
-//     next()
-// })
+
 router.post('/register', async (ctx)=>{
     let { username , password } = ctx.request.body
     // console.log(username,password)
@@ -39,7 +35,6 @@ router.post('/register', async (ctx)=>{
 router.post('/login',async (ctx)=>{
     let { username , password } = ctx.request.body
     let  data = await Roles.findOne({username})
-    console.log(2,data)
     if(!data){
         ctx.body = {
             code:100400,

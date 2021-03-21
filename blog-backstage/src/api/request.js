@@ -1,9 +1,9 @@
 
 import axios from 'axios'
 
-const baseURL = '/api'
-// const baseURL = 'http://192.168.1.6:25371'
+import baseURL from './baseApi'
 
+// console.log(env,'ssssss')
 export default function(options){
 
     let instance = axios.create({
@@ -33,3 +33,5 @@ export default function(options){
     return instance(options)
 
 }
+
+export const imgBaseUrl = baseURL

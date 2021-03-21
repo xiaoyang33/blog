@@ -2,16 +2,25 @@
 const router = require('koa-router')()
 const ArticleOperation = require('../../mongoose/backStage/Operations')
 const upload = require('../../utils/upLoadImg')
-const URL = 'http://localhost:25371'   //测试地址
+// const URL = 'http://localhost:25371'   //测试地址
+const URL = require('../../baseApi')  //测试地址
 // 保存文章
 router.post('/saveArticle',async (ctx)=>{
-    let article = new ArticleOperation({
-        articleTitle:'Xiaosaab',
-        articleContent:'你好啊啊 Html'
-    })
-    let err = await article.save()
-    console.log(err);
-    if(!err){
+    let query = ctx.request.body
+    let _id = query._id
+    delete query._id
+    // console.log(query,_id)
+    let res= ''
+    if(_id){
+       res = await ArticleOperation.updateOne({_id},{...query})
+    }else{
+        let article = new ArticleOperation({
+            ...ctx.request.body
+        })
+        res = await article.save()
+    }
+    
+    if(!res){
         ctx.body = {
             code:100400,
             data:{
@@ -28,7 +37,36 @@ router.post('/saveArticle',async (ctx)=>{
         }
     }
 })
-
+// 查询文章
+router.get('/findArticle',async (ctx)=>{
+    // console.log(ctx.query)
+    let data = await ArticleOperation.find({...ctx.query},{__v:false,createDate:false})
+    console.log(data)
+    ctx.body = {
+        code:200,
+        data
+    }
+})
+// 删除文章
+router.get('/deleteArticle',async (ctx)=>{
+    let id = ctx.query.id
+    let data = await ArticleOperation.remove({'_id':id})
+    if(data.deletedCount> 0){
+        ctx.body = {
+            code:200,
+            data:{
+                msg:'删除成功'
+            }
+        }
+    }
+    
+})
+router.get('/sort',async (ctx)=>{
+    let data = await ArticleOperation.find().sort({createDate:-1})
+    console.log(data)
+    ctx.body = 'ssss'
+    
+})
 // 上传图片多张
 router.post('/upLoadImgMany',upload.array('img'), async (ctx)=>{
     const files = ctx.req.files
@@ -36,7 +74,8 @@ router.post('/upLoadImgMany',upload.array('img'), async (ctx)=>{
     ctx.body = {
         code:200,
         data:{
-            imgUrl:`${URL}/images/blog-thumbnail/${files[0].filename}`
+            imgUrl:`${URL}/images/blog-thumbnail/${files[0].filename}`,
+            files,
         }
     }
 })
@@ -44,7 +83,7 @@ router.post('/upLoadImgMany',upload.array('img'), async (ctx)=>{
 // 二进制刘处理 上传单张图片
 router.post('/upLoadImg',upload.single('img'), async (ctx)=>{
     const file = ctx.req.file
-    // console.log(file)
+    console.log(file)
     ctx.body = {
         code:200,
         data:{
@@ -58,13 +97,12 @@ router.post('/upLoadImg',upload.single('img'), async (ctx)=>{
 
 
 
-
-
 // 删除文章
 router.put('/deleteArticle',async (ctx)=>{
     // let data = await articleOperation.find({})
-    let data = await ArticleOperation.deleteMany({articleTitle:'Xiaosaab'})
+    let data = await ArticleOperation.deleteMany({})
     console.log(data);
+    ctx.body = '删除成功'
 })
 
 module.exports = router

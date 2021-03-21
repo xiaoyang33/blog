@@ -1,0 +1,130 @@
+[2021-03-21T11:19:03.700] [DEBUG] application - ReferenceError: _id is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:43:47
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at async cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:9)
+    at async F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:7
+    at async bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:5)
+[2021-03-21T11:19:35.141] [DEBUG] application - ReferenceError: data is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:47:9
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at async cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:9)
+    at async F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:7
+    at async bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:5)
+[2021-03-21T11:19:44.939] [DEBUG] application - ReferenceError: data is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:47:9
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at async cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:9)
+    at async F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:7
+    at async bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:5)
+[2021-03-21T11:27:45.067] [DEBUG] application - ReferenceError: ctex is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:33:17
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at async cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:9)
+    at async F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:7
+    at async bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:5)
+[2021-03-21T11:36:02.725] [DEBUG] application - ReferenceError: err is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:13:17
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at filter (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-json\index.js:25:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:15)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:13
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:11)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2021-03-21T11:36:16.181] [DEBUG] application - ReferenceError: err is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:14:5
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at filter (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-json\index.js:25:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:15)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:13
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:11)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2021-03-21T11:43:02.961] [DEBUG] application - ReferenceError: quer is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:12:17
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at next (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:45:18)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:346:16
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:44:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-router\lib\router.js:351:31)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at views (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-views\src\index.js:91:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:15)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at filter (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-json\index.js:25:12)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:15)
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:13
+    at dispatch (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:11)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2021-03-21T11:45:02.978] [DEBUG] application - ReferenceError: err is not defined
+    at F:\web\notes\MMM\bolg\blog-server\routes\backStage\operation.js:22:17
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async serve (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-static\index.js:53:9)
+    at async cors (F:\web\notes\MMM\bolg\blog-server\node_modules\koa2-cors\dist\index.js:91:9)
+    at async F:\web\notes\MMM\bolg\blog-server\node_modules\koa-log4\koa-logger.js:86:7
+    at async bodyParser (F:\web\notes\MMM\bolg\blog-server\node_modules\koa-bodyparser\index.js:95:5)

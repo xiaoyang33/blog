@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <el-container>
-            <el-aside width="160px">
+            <el-aside width="200px">
                 <div class="title">落鲸</div>
                 <!-- @open="handleOpen"
                     @close="handleClose" -->
@@ -25,7 +25,7 @@
                         </el-menu-item>
                         <el-submenu index="1" :key="index" v-if="item.children">
                             <template #title>
-                                <i class="el-icon-location"></i>
+                                <i :class="item.icon"></i>
                                 <span>{{ item.title }}</span>
                             </template>
                             <template v-for="(ite, ind) in item.children">
@@ -68,7 +68,7 @@ import routerEnums from "@/enums/routes";
 export default {
     data() {
         return {
-            routerEnums,
+            routerEnums
         };
     },
     methods:{
@@ -86,6 +86,7 @@ $headerHeight: 80px;
     height: 100vh;
     width: 100vw;
     background: #efe;
+    overflow: scroll-y;
 }
 .el-aside {
     background: #788269;
@@ -129,7 +130,11 @@ $headerHeight: 80px;
 }
 .el-main {
     width: 100%;
-    height: 100%;
+    height: calc(100vh - #{$headerHeight});
+    overflow: scroll-y;
     // background:yellow;
 }
+// /deep/ .el-menu .el-menu-item{
+//     padding: 0;
+// }
 </style>

@@ -17,10 +17,12 @@ router.get('/', async (ctx, next) => {
 // 后台开始
 const user = require('./backStage/user')
 const operation = require('./backStage/operation')
+const other = require('./backStage/otherInfo')
 
 
 router.use('/user',user.routes(),user.allowedMethods())
 router.use('/operation',operation.routes(),operation.allowedMethods())
+router.use('/other',other.routes(),other.allowedMethods())
 
 // 后台结束
 

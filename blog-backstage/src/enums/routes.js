@@ -12,19 +12,19 @@ export default   [
         icon:'el-icon-s-order'
     },
     {
-        title:'导航三',
-        path:'/aaa',
-        icon:'el-icon-menu',
+        title:'文章管理',
+        path:'/manageMent',
+        icon:'el-icon-s-tools',
         children:[
             {
-                title:'导航三-一',
-                path:'/bbb',
-                icon:'el-icon-menu',
+                title:'添加分类',
+                path:'/addCate',
+                icon:'el-icon-s-unfold',
             },
             {
-                title:'导航三-二',
-                path:'/ccc',
-                icon:'el-icon-menu',
+                title:'文章管理',
+                path:'/ArticleManage',
+                icon:'el-icon-s-release',
             }
         ]
     },

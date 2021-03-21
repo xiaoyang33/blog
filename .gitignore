@@ -1,3 +1,6 @@
 /blog-server/node_modules
+/blog-server/baseApi.js
 /blog-backstage/node_modules
-/blog/node_modules
+/blog-backstage/api/baseApi.js
+/my-blog/node_modules
+/my-blog/api/baseApi.js

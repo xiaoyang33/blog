@@ -30,19 +30,15 @@ const routes = [
         component: () => import('@/views/pages/WritePage.vue')
       },
       {
-        path:'/aaa',
-        component: () => import('@/views/pages/aaa.vue'),
-        children:[
-          {
-            path:'/bbb',
-            component: () => import('@/views/pages/bbb.vue'),
-          },
-          {
-            path:'/ccc',
-            component: () => import('@/views/pages/ccc.vue'),
-          }
-        ]
-      }
+        name: 'AddCate',
+        path:'/addCate',
+        component: () => import('@/views/pages/AddCate.vue')
+      },
+      {
+        name: 'ArticleManage',
+        path:'/articleManage',
+        component: () => import('@/views/pages/ArticleManage.vue')
+      },
     ]
   }
 ]

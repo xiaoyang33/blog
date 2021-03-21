@@ -17,6 +17,14 @@ let articleScheam = mongoose.Schema({
     tag:String,
     thumbnail:String,
     classIfy:String,
+    pageView:{
+        type:Number,
+        default:1
+    },
+    isChangeTop:{
+        type:Number,
+        default:9999
+    },
     createDate:{
         type:String,
         default:String(new Date().getTime())

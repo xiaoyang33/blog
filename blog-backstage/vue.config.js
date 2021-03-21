@@ -3,7 +3,8 @@ module.exports = {
     // 解决Cli3 quill-image-resize-module的报错
     chainWebpack: config => {
         config.plugin('provide').use(webpack.ProvidePlugin, [{
-            'window.Quill': 'quill'
+            'window.Quill': 'quill',
+            'Quill': 'quill/dist/quill.js'
         }]);
     },
     configureWebpack:{
@@ -17,7 +18,7 @@ module.exports = {
     devServer:{
       proxy:{
         '/api':{
-          target:'http://localhost:25371',
+          target:'http://127.0.0.1:25371',
           changeOrigin:true,
           pathRewrite:{
               '^/api':''

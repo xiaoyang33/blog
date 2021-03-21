@@ -21,7 +21,7 @@
                 <div class="tips" v-if="rules.password">密码不能为空</div>
             </div>
             <div class="item">
-                <el-button type="primary" @click="handleClicl">登录</el-button>
+                <el-button type="primary" @click="handleClick">登录</el-button>
             </div>
         </div>
     </div>
@@ -43,11 +43,11 @@ export default {
         }
     },
     methods:{
-        handleClicl(){
+        handleClick(){
            if( !this.checkTrim()) return 
             // console.log(this.userInfo);
             login(this.userInfo).then(res=>{
-                console.log(res);
+                // console.log(res);
                 if(res.data.token){
                     this.$message.success({
                         message:res.data.msg,
