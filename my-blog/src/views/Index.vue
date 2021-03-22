@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <el-container>
-            <el-aside width="230px">
+            <el-aside width="300px">
                 <my-aside/>
             </el-aside>
             <el-container>
@@ -41,8 +41,8 @@ export default {
     padding:0 ;
 }
 .el-main{
-    background: yellow;
-    padding: 10px;
+    background: skyblue;
+    padding: 30px 50px;
     height:calc(100vh - 60px) ;
 }
 </style>

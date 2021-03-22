@@ -6,25 +6,41 @@
                 class="nav-item"
                 v-for="item in navEnums"
                 :key="item.title"
-                :class="{ overturn: item.icon2,isSearch: item.path === 'search' && isSearchNow  }"
+                :class="{
+                    overturn: item.icon2,
+                    isSearch: item.path === 'search' && isSearchNow,
+                }"
                 @click="navClick(item.path)"
             >
-                <div class="item" :class="{ isSearch: item.path === 'search' && isSearchNow }">
-                    <template > 
-                      <i :class="item.icon1"></i>
-                      <span v-if="item.path !== 'search' || !isSearchNow">{{ item.title }}</span>
-                      <template v-if="item.icon2">
-                          <i :class="item.icon2"></i>
-                          <ul class="floating">
-                              <li v-for="ite in cate" :key="ite.title">
-                                  {{ ite.title }}
-                              </li>
-                          </ul>
-                      </template>
-                      <template  v-if=" item.path === 'search' && isSearchNow">
-                         <input type="text" class="input" placeholder="请输入搜索内容"/>
-                         <i  i class="el-icon-close" @click.stop="closeSearch"></i>
-                      </template>
+                <div
+                    class="item"
+                    :class="{ isSearch: item.path === 'search' && isSearchNow }"
+                >
+                    <template>
+                        <i :class="item.icon1"></i>
+                        <span v-if="item.path !== 'search' || !isSearchNow">{{
+                            item.title
+                        }}</span>
+                        <template v-if="item.icon2">
+                            <i :class="item.icon2"></i>
+                            <ul class="floating">
+                                <li v-for="ite in cate" :key="ite.title">
+                                    {{ ite.title }}
+                                </li>
+                            </ul>
+                        </template>
+                        <template v-if="item.path === 'search' && isSearchNow">
+                            <input
+                                type="text"
+                                class="input"
+                                placeholder="请输入搜索内容"
+                            />
+                            <i
+                                i
+                                class="el-icon-close"
+                                @click.stop="closeSearch"
+                            ></i>
+                        </template>
                     </template>
                 </div>
             </li>
@@ -51,15 +67,15 @@ export default {
                 this.$router.push(path);
             }
         },
-        closeSearch(){
-          this.isSearchNow = false
-        }
+        closeSearch() {
+            this.isSearchNow = false;
+        },
     },
 };
 </script>
 
 <style lang="scss" scoped>
-$liWidth:73px;
+$liWidth: 73px;
 .header {
     display: flex;
     box-sizing: border-box;
@@ -78,10 +94,11 @@ $liWidth:73px;
             align-items: center;
             cursor: pointer;
             margin: 0 10px;
+            transition: 0.3s;
             position: relative;
-        width: $liWidth;
+            width: $liWidth;
             .item {
-        width: $liWidth;
+                width: $liWidth;
                 position: relative;
                 display: flex;
                 align-items: center;
@@ -134,6 +151,7 @@ $liWidth:73px;
         display: flex;
         width: 100%;
         opacity: 0;
+        visibility: hidden;
         // visibility: hidden;
         flex-direction: column;
         align-items: center;
@@ -160,9 +178,10 @@ $liWidth:73px;
         margin-top: 4px;
         padding: 3px 5px;
         border-bottom: 1px solid #80c8f8;
-        &::placeholder{
-          color: #eee;
-          font-size: 13px;
+        color: #999;
+        &::placeholder {
+            color: #eee;
+            font-size: 13px;
         }
     }
 }
