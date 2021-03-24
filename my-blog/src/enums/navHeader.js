@@ -20,7 +20,7 @@ export default [
     {
         icon1:'el-icon-timer',
         title:'时间线',
-        path:''
+        path:'/timeline'
     },
     {
         icon1:'el-icon-cherry',

@@ -125,6 +125,7 @@ $liWidth: 73px;
             // 二级菜单
             &:hover .floating {
                 display: flex;
+                z-index:1;
                 left: 0;
                 opacity: 1;
                 transition: 0.3s;

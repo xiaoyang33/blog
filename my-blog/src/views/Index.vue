@@ -9,7 +9,10 @@
                    <my-header/>
                 </el-header>
                 <el-main>
-                    <router-view></router-view>
+                    <div class="main">
+                        <router-view></router-view>
+                    </div>
+                    <a class="bei" href="https://beian.miit.gov.cn">豫ICP备2021006859号-1</a>
                 </el-main>
             </el-container>
         </el-container>
@@ -42,7 +45,17 @@ export default {
 }
 .el-main{
     background: skyblue;
-    padding: 30px 50px;
+    padding: 20px 50px;
     height:calc(100vh - 60px) ;
+    .main{
+        min-height: 97%;
+    }
+    .bei{
+        position: relative;
+        bottom: 0;
+        left: 41%;
+        transform: translateX(-50%);
+        color:rgb(167, 37, 59);
+    }
 }
 </style>
