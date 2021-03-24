@@ -10,11 +10,11 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path:'/',
-    redirect:'/home',
+    redirect:'/',
     component:()=>import('../views/Index.vue'),
     children:[
       {
-        path:'/home',
+        path:'/',
         name:'Home',
         component:()=>import('../views/Home.vue')
       },

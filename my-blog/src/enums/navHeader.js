@@ -9,7 +9,7 @@ export default [
     {
         icon1:'el-icon-house',
         title:'首页',
-        path:'/home'
+        path:'/'
     },
     {
         icon1:'el-icon-s-operation',
