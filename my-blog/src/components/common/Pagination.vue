@@ -1,5 +1,5 @@
 <template>
-    <ul class="pagination">
+    <ul class="pagination" v-if="total > 0">
         <li @click="preOne" :style="{visibility: currentIndex !== 1 ?  'visible' : 'hidden'}">
             <i class="el-icon-arrow-left"></i>
         </li>
@@ -22,8 +22,7 @@
 export default {
     data() {
         return {
-            currentIndex: 1,
-            page:[]
+            currentIndex: 1
         };
     },
     props: {
@@ -37,7 +36,7 @@ export default {
         },
         total: {
             type: Number,
-            default: 70,
+            default: 0,
         },
         maxMenu: {
             type: Number,
@@ -84,13 +83,16 @@ export default {
         preOne() {
             if (this.currentIndex === 1) return;
             this.currentIndex--;
+            this.$emit("update:pageNum",this.currentIndex)
         },
         nextOne() {
             if (this.isLastPage) return;
             this.currentIndex++;
+            this.$emit("update:pageNum",this.currentIndex)
         },
         handlePageClick(index){
             this.currentIndex = index
+            this.$emit("update:pageNum",this.currentIndex)
         }
     },
 };
@@ -100,6 +102,7 @@ export default {
 .pagination {
     display: flex;
     padding: 20px 0;
+    justify-content: center;
     li {
         transition: .3s;
         $liSize: 30px;

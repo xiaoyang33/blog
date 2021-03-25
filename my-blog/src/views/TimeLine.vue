@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 $lineColor: #49b1f5;
-$paddingDistance: 30px;
+$paddingDistance: 40px;
 .time-box {
     display: flex;
     flex-direction: column;
@@ -121,7 +121,7 @@ $paddingDistance: 30px;
             background: #fff;
             border-radius: 50%;
             position: absolute;
-            left: -40px;
+            left: -50px;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -132,7 +132,7 @@ $paddingDistance: 30px;
             width: 400px;
             img {
                 $imgSize: 75px;
-                width: 110px;
+                width: 120px;
                 height: $imgSize;
                 border-radius: 4px;
                 margin-right: 15px;

@@ -7,6 +7,7 @@
     "build": "cross-env NODE_ENV=PROD vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.4",
     "element-ui": "^2.15.1",

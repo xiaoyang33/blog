@@ -60,7 +60,7 @@ export default {
             operation.findArticle().then((res) => {
                 console.log(res);
                 if(res.code === 200){
-                  this.tabData = res.data
+                  this.tabData = res.data.data
                 }
             });
         },

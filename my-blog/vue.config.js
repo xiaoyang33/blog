@@ -5,7 +5,8 @@ module.exports = {
       resolve:{
         alias:{
             '@':'/src'
-        }
+        },
+        extensions: ['.js', '.json', '.vue', '.scss', '.css']
       }
     },
     devServer:{

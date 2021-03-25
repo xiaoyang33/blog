@@ -5,18 +5,18 @@
                 <img src="~@/assets/img/6.jpg" alt="" />
             </div>
             <div class="article-container" :key="item"  v-if="item == '2'">
-                <h3>Vue3中的路由使用</h3>
+                <h3>{{articleInfo.articleTitle}}</h3>
                 <div class="info">
-                    <div class="is-top">
+                    <div class="is-top" v-if="item.isChangeTop === 1">
                         <i class="el-icon-star-on"></i>
                         置顶
                     </div>
                     <div class="time">
-                        发表于{{ formateUnix(1616417541171) }}
+                        发表于{{ formateUnix(articleInfo.createDate) }}
                     </div>
                 </div>
                 <div class="desc">
-                    在后就开始挂号费空间按时发货就按个设计风格环境爱是规范化交感神经官方环境爱是规范化
+                    {{articleInfo.articleContent}}
                 </div>
             </div>
         </template>
@@ -43,8 +43,8 @@ export default {
         }
     },
     mounted() {
-        let data = new Date().getTime();
-        console.log(formateUnix(data), data);
+        // let data = new Date().getTime();
+        // console.log(formateUnix(data), data);
     },
     methods: {
         formateUnix,
@@ -110,6 +110,7 @@ $imgWidth: 250px;
         .time {
             font-size: 14px;
             color: #999;
+            margin: 10px 0 0;
         }
         .desc {
             margin-top: 10px;

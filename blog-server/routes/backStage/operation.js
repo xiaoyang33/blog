@@ -2,8 +2,8 @@
 const router = require('koa-router')()
 const ArticleOperation = require('../../mongoose/backStage/Operations')
 const upload = require('../../utils/upLoadImg')
-// const URL = 'http://localhost:25371'   //测试地址
-const URL = require('../../baseApi')  //测试地址
+const URL = 'http://localhost:25371'   //测试地址
+// const URL = require('../../baseApi')  //测试地址
 // 保存文章
 router.post('/saveArticle',async (ctx)=>{
     let query = ctx.request.body
@@ -39,12 +39,35 @@ router.post('/saveArticle',async (ctx)=>{
 })
 // 查询文章
 router.get('/findArticle',async (ctx)=>{
-    // console.log(ctx.query)
-    let data = await ArticleOperation.find({...ctx.query},{__v:false,createDate:false})
-    console.log(data)
+    console.log(ctx.query)
+    let total = await ArticleOperation.count()
+    let { pageSize , pageNum } = ctx.query
+    delete ctx.query.pageNum
+    delete ctx.query.pageSize
+    delete ctx.query.total
+    let data = await ArticleOperation.find({...ctx.query},{__v:false})
+                                        //分页查询
+                                      .skip((pageNum - 1) * pageSize).limit(Number(pageSize))
+    // console.log(data)
     ctx.body = {
         code:200,
-        data
+        data:{
+            total,
+            data,
+        }
+    }
+}),
+// 分页查询文章
+router.get('/pageFindArticle',async (ctx) => {
+    let total = await ArticleOperation.count()
+    let { pageSize , pageNum } = ctx.query
+    let data = await ArticleOperation.find({},{__v:false,createDate:false}).skip((pageNum - 1) * pageSize).limit(Number(pageSize))
+    console.log(ctx.query , total,data)
+    ctx.body = {
+        code:200,
+        data:{
+            total,
+        }
     }
 })
 // 删除文章
