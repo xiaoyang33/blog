@@ -20,7 +20,7 @@ const operation = require('./backStage/operation')
 const other = require('./backStage/otherInfo')
 
 
-router.use('/user',user.routes(),user.allowedMethods())
+router.use('/user',user.routes()).use(user.allowedMethods())
 router.use('/operation',operation.routes(),operation.allowedMethods())
 router.use('/other',other.routes(),other.allowedMethods())
 

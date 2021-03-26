@@ -85,6 +85,7 @@
                 ref="myQuillEditor"
                 v-model="content.articleContent"
                 :options="editorOption"
+                class="quill"
             />
         </el-row>
         <el-row :gutter="10">
@@ -164,7 +165,7 @@ export default {
                         // loading: true,
                         name: "img",
                         headers:(xhr)=>{
-                            xhr.setRequestHeader ('token11',this.getStorage('token'))
+                            xhr.setRequestHeader ('token',this.getStorage('token'))
                         },
                         action: this.getUpLoadUrl(),
                         response: (res) => {
@@ -194,6 +195,7 @@ export default {
     methods: {
         // 保存文章
         saveArticle(){
+            this.content.tag += this.content.classIfy + ','
             operation.saveArticle({
                 ...this.content
             }).then(res=>{
@@ -209,6 +211,7 @@ export default {
             // console.log(file);
             this.isUpLoadImg = true;
         },
+        // 自定义富文本上传图片按钮
         enitorUpLoadImg(file) {
             // console.log(file);
             let quill = this.$refs.myQuillEditor.quill;
@@ -271,6 +274,32 @@ h3 {
         margin-right: 20px;
     }
 }
+.quill{
+    
+    /deep/ .ql-editor{
+        padding-bottom: 30px;
+    }
+}
+/deep/ .ql-editor{
+         h1{
+            font-size: 48px;
+        }
+        h2{
+            font-size: 44px;
+        }
+        h3{
+            font-size: 40px;
+        }
+        h4{
+            font-size: 36px;
+        }
+        h5{
+            font-size: 32px;
+        }
+        h6{
+            font-size: 28px;
+        }
+}
 .avatar-uploader {
     border: 1px dashed #ccc;
     border-radius: 6px;
@@ -281,6 +310,7 @@ h3 {
     height: $upLoadHeight;
     &.editor {
         display: none;
+        
     }
 }
 .avatar-uploader .el-upload:hover {

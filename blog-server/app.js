@@ -24,7 +24,7 @@ app.use(views(__dirname + '/views', {
 
 
 // routes
-app.use(index.routes(), index.allowedMethods())
+app.use(index.routes()).use(index.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

@@ -41,14 +41,13 @@ router.post('/saveArticle',async (ctx)=>{
 router.get('/findArticle',async (ctx)=>{
     console.log(ctx.query)
     let total = await ArticleOperation.count()
-    let { pageSize , pageNum } = ctx.query
+    let { pageSize = 1 , pageNum = 10 } = ctx.query
     delete ctx.query.pageNum
     delete ctx.query.pageSize
     delete ctx.query.total
     let data = await ArticleOperation.find({...ctx.query},{__v:false})
                                         //分页查询
                                       .skip((pageNum - 1) * pageSize).limit(Number(pageSize))
-    // console.log(data)
     ctx.body = {
         code:200,
         data:{

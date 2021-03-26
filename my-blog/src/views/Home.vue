@@ -6,6 +6,7 @@
                 :index="index"
                 :articleInfo="item"
                 :key="item._id"
+                @click.native="goArticle(item)"
             ></article-module-1>
             <pagination :pageNum.sync="query.pageNum" :pageSize="query.pageSize" :total="query.total"/>
         </div>
@@ -51,9 +52,12 @@ export default {
             operations.getArticle({...this.query}).then((res) => {
                 this.query.total = res.data.total
                 this.article = res.data.data
-                console.log(res,this.article,this.query);
+                // console.log(res,this.article,this.query);
             });
         },
+        goArticle(item){
+            this.$router.push('/article/' + item._id)
+        }
     },
 };
 </script>

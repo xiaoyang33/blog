@@ -2,43 +2,58 @@
     <div class="time-box">
         <div class="title">{{ title }}</div>
         <div class="time-line">
-            <div class="time-title">已经完成了11篇博客,要继续加油哟</div>
+            <div class="time-title">已经完成了{{query.total}}篇博客,要继续加油哟</div>
             <div class="article-box">
-                <div class="time-article" v-for="i in arr" :key="i">
+                <div class="time-article" v-for="item in article" :key="item._id">
                     <div class="item">
-                        <img src="../assets/img/6.jpg" alt="" />
+                        <img :src="item.thumbnail" alt="" />
                         <div>
-                            <p class="article-title">这是一回家开发商副科级</p>
-                            <p><i class="el-icon-date"></i>2020-29-2</p>
+                            <p class="article-title">{{item.articleTitle}}</p>
+                            <p><i class="el-icon-date"></i>{{formateUnix(item.createDate)}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <pagination />
+        <pagination :total="query.total" :pageSize="query.pageSize" :pageNum="query.pageNum"/>
     </div>
 </template>
 
 <script>
 import Pagination from "../components/common/Pagination.vue";
+import operations from "@/api/operations";
+import { formateUnix } from "@/utils/formateDay";
 export default {
     components: { Pagination },
     data() {
         return {
-            arr: [1, 2, 3, 4, 5, 6, 7],
+            article: [],
             title: "总档",
-            pageQuery: {
+            query: {
                 pageNum: 1,
-                pageSize: 10,
-                total: 100,
+                pageSize: 6,
+                total: 0,
             },
         };
     },
-    methods: {
-        getTop(index) {
-            return (index + 1) * 25 + "px";
-        },
+     watch:{
+        'query.pageNum'(){
+            this.initList();
+        }
     },
+    created(){
+        this.initList()
+    },
+    methods:{
+        formateUnix,
+        initList(){
+            operations.getArticle({...this.query}).then((res) => {
+                this.query.total = res.data.total
+                this.article = res.data.data
+                // console.log(res,this.article,this.query);
+            });
+        }
+    }
 };
 </script>
 

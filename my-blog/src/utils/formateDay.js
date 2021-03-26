@@ -2,5 +2,5 @@ import dayjs from 'dayjs'
 
 export const formateUnix = (unix)=>{
 
-    return dayjs(unix).format('YYYY年MM月DD日')
+    return dayjs(unix - 0).format('YYYY年MM月DD日')
 }
