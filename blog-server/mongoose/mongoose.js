@@ -1,11 +1,11 @@
 
-
+const {DBUrl} = require('../baseApi')
 
 const myMongo = (collections)=>{
     const mongoose = require('mongoose')
 
     // const DB_URL = 'mongodb://139.196.253.225:27017/blogServer'
-    const DB_URL = 'mongodb://127.0.0.1:27017/blogServer'
+    const DB_URL = `mongodb://${DBUrl}/blogServer`
 
     let db = mongoose.createConnection(DB_URL)
 

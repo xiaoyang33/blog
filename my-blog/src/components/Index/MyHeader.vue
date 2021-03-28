@@ -10,6 +10,7 @@
                     overturn: item.icon2,
                     isSearch: item.path === 'search' && isSearchNow,
                 }"
+                :style="{color: item.path === $route.path ? '#008c8c': ''}"
                 @click="navClick(item.path)"
             >
                 <div
@@ -24,8 +25,8 @@
                         <template v-if="item.icon2">
                             <i :class="item.icon2"></i>
                             <ul class="floating">
-                                <li v-for="ite in cate" :key="ite.title">
-                                    {{ ite.title }}
+                                <li v-for="ite in cate" :key="ite.articleClassIfy" @click="goTimeLine(ite)">
+                                    {{ ite.articleClassIfy }}
                                 </li>
                             </ul>
                         </template>
@@ -50,6 +51,7 @@
 
 <script>
 import navEnums from "@/enums/navHeader";
+import OtherApi from '@/api/otherApi'
 export default {
     data() {
         return {
@@ -58,18 +60,37 @@ export default {
             isSearchNow: false,
         };
     },
+    created(){
+        this.getClassIfy()
+    },
     methods: {
         navClick(path) {
-            console.log(path);
             if (path === "search") {
                 this.isSearchNow = true;
             } else {
-                this.$router.push(path);
+                this.$router.push({
+                    path
+                });
             }
         },
         closeSearch() {
             this.isSearchNow = false;
         },
+        getClassIfy(){
+            OtherApi.getArticleClassIfy().then(res=>{
+                console.log(res)
+                this.cate = res.data
+            })
+        },
+        goTimeLine(item){
+            // console.log(item)
+            this.$router.push({
+                path:'/timeline',
+                query:{
+                    classIfy:item.articleClassIfy
+                }
+            })
+        }
     },
 };
 </script>
@@ -84,6 +105,9 @@ $liWidth: 73px;
     height: 100%;
     padding: 0 20px;
     background: #ccc;
+    .title{
+        flex-shrink: 0;
+    }
     .nav {
         margin-left: auto;
         display: flex;
@@ -157,16 +181,16 @@ $liWidth: 73px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: red;
+        background:#eee;
         border-radius: 4px;
-        color: skyblue;
+        color: #333;
         padding: 10px 0;
         li {
             padding: 5px 0;
             text-align: center;
             width: 100%;
             &:hover {
-                background: rgb(14, 230, 25);
+               background: cadetblue;
             }
         }
     }

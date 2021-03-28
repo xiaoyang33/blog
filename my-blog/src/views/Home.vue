@@ -12,7 +12,9 @@
         </div>
         <div class="aside">
             <aside-module-1>
-                <template v-slot:title>标题</template>
+                <template v-slot:title>
+                    推荐文章
+                </template>
             </aside-module-1>
         </div>
     </div>
@@ -32,7 +34,7 @@ export default {
     data() {
         return {
             query: {
-                pageSize:8,
+                pageSize:6,
                 pageNum:1,
                 total:0
             },
@@ -43,7 +45,7 @@ export default {
         this.initList();
     },
     watch:{
-        'query.pageNum'(n){
+        'query.pageNum'(){
             this.initList();
         }
     },
@@ -52,7 +54,6 @@ export default {
             operations.getArticle({...this.query}).then((res) => {
                 this.query.total = res.data.total
                 this.article = res.data.data
-                // console.log(res,this.article,this.query);
             });
         },
         goArticle(item){

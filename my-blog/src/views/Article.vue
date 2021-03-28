@@ -6,8 +6,8 @@
             <h3>{{article.articleTitle}}</h3>
             <div class="subtitle">
                 <p><i class="el-icon-date"></i>{{formateUnix(article.createDate)}}</p>
-                <!-- <p>阅读次数:99</p>
-                <p>评论:3</p> -->
+                <p>已读次数:{{article.pageView}}</p>
+                <!-- <p>评论:3</p> -->
             </div>
         </div>
         <div class="article" v-html="article.articleContent">
@@ -20,8 +20,7 @@
 
 <script>
 import operations from "@/api/operations";
-import { formateUnix } from "@/utils/formateDay";
-import dayjs from 'dayjs'
+import { formateUnix , isSameDay} from "@/utils/formateDay";
 export default {
     data(){
         return {
@@ -29,14 +28,32 @@ export default {
         }
     },
     created(){
-        operations.getArticle({_id:this.$route.params.id}).then(res=>{
-            console.log(res)
-            this.article = res.data.data[0]
+        let _id = this.$route.params.id
+        operations.getArticleById({_id}).then(res=>{
+            // console.log(res)
+            this.article = res.data.data
         })
-       console.log( dayjs(1616725081285).format("YYYY:MM:DD"))
+        let dateTag = this.getStorage(_id)
+        if(!dateTag){
+         this.setStorage(_id,new Date().getTime())
+         this.upDatePageView()
+        }else{
+            if(isSameDay(dateTag)){
+                return
+            }else{
+                 this.setStorage(_id,new Date().getTime())
+                 this.upDatePageView()
+            }
+        }
+        
     },
     methods:{
-        formateUnix
+        formateUnix,
+        upDatePageView(){
+            operations.updataPageView({_id:this.$route.params.id}).then(res=>{
+                console.log(res)
+            })
+        }
     }
 };
 </script>

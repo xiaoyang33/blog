@@ -4,7 +4,8 @@
             <slot name="title" />
         </div>
         <div class="main">
-            <ul class="article-list">
+           <slot name="content">
+                <ul class="article-list">
                 <li v-for="i in 3" :key="i">
                     <img src="../../assets/img/wor1.jpg" alt="" />
                     <div>
@@ -13,6 +14,7 @@
                     </div>
                 </li>
             </ul>
+           </slot>
         </div>
     </div>
 </template>

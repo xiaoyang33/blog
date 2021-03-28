@@ -2,22 +2,22 @@
     <div>
         <div class="head">
             <div class="title-img">
-                <img src="~@/assets/img/wor1.jpg" alt="" />
+                <img :src="userInfo.userImg" alt="" />
             </div>
         </div>
         <div class="container">
-            <h3>落鲸</h3>
+            <h3>{{userInfo.userTitle}}</h3>
             <div class="desc">
-                要确信自己可以这样你才真的可以
+                {{userInfo.userDesc}}
             </div>
             <div class="card-info">
                 <div>
-                    <p>文章</p>
-                    <p>30</p>
+                    <p @click="goTimeLine">文章</p>
+                    <p>{{totalArticle}}</p>
                 </div>
                 <div>
                     <p>分类</p>
-                    <p>7</p>
+                    <p>{{classIfyNum}}</p>
                 </div>
             </div>
         </div>
@@ -25,7 +25,36 @@
 </template>
 
 <script>
-export default {};
+import operstion from '@/api/operations'
+export default {
+    data(){
+        return {
+            userInfo:{
+                userDesc:'',
+                userImg:'',
+                userTitle:''
+            },
+            totalArticle:0,
+            classIfyNum:0
+        }
+    },
+    created(){
+        this.getUserInfo()
+    },
+    methods:{
+        goTimeLine(){
+            this.$router.push('/timeLine')
+        },
+        getUserInfo(){
+            operstion.getUserInfo().then(res=>{
+                // console.log(res);
+                Object.assign(this.userInfo,res.data.user)
+                this.totalArticle = res.data.total
+                this.classIfyNum = res.data.classIfyNum
+            })
+        },
+    }
+};
 </script>
 
 <style lang="scss" scoped>

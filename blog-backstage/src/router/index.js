@@ -39,6 +39,11 @@ const routes = [
         path:'/articleManage',
         component: () => import('@/views/pages/ArticleManage.vue')
       },
+      {
+        name:"BlogInfo",
+        path:'/bloginfo',
+        component:() => import ('@/views/pages/BolgInfo.vue')
+      }
     ]
   }
 ]

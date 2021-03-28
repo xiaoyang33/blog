@@ -2,8 +2,8 @@
 const router = require('koa-router')()
 const ArticleOperation = require('../../mongoose/backStage/Operations')
 const upload = require('../../utils/upLoadImg')
-const URL = 'http://localhost:25371'   //测试地址
-// const URL = require('../../baseApi')  //测试地址
+const {BaseUrl} = require('../../baseApi')  //测试地址
+const { get } = require('mongoose')
 // 保存文章
 router.post('/saveArticle',async (ctx)=>{
     let query = ctx.request.body
@@ -39,12 +39,42 @@ router.post('/saveArticle',async (ctx)=>{
 })
 // 查询文章
 router.get('/findArticle',async (ctx)=>{
-    console.log(ctx.query)
     let total = await ArticleOperation.count()
-    let { pageSize = 1 , pageNum = 10 } = ctx.query
-    delete ctx.query.pageNum
-    delete ctx.query.pageSize
-    delete ctx.query.total
+    let { pageSize = 10 , pageNum = 1 } = ctx.query
+    ctx.query.pageNum && delete ctx.query.pageNum
+    ctx.query.pageSize && delete ctx.query.pageSize
+    ctx.query.total && delete ctx.query.total
+    console.log(ctx.query)
+    let data = await ArticleOperation.find({...ctx.query},{__v:false})
+                                        //分页查询
+                                      .skip((pageNum - 1) * pageSize).limit(Number(pageSize))
+                                    //   console.log(data)
+    ctx.body = {
+        code:200,
+        data:{
+            total,
+            data,
+        }
+    }
+}),
+// id查询文章
+router.get('/findArticleById',async (ctx) => {
+    let data = await ArticleOperation.findById(ctx.query._id,{__v:false})
+    // console.log(ctx.query,data)
+    ctx.body = {
+        code:200,
+        data:{
+            data
+        }
+    }
+})
+// 推荐文章
+router.get('/articleCommend',async (ctx)=>{
+    let total = await ArticleOperation.count()
+    let { pageSize = 10 , pageNum = 1 } = ctx.query
+    ctx.query.pageNum && delete ctx.query.pageNum
+    ctx.query.pageSize && delete ctx.query.pageSize
+    ctx.query.total && delete ctx.query.total
     let data = await ArticleOperation.find({...ctx.query},{__v:false})
                                         //分页查询
                                       .skip((pageNum - 1) * pageSize).limit(Number(pageSize))
@@ -55,18 +85,16 @@ router.get('/findArticle',async (ctx)=>{
             data,
         }
     }
-}),
-// 分页查询文章
-router.get('/pageFindArticle',async (ctx) => {
-    let total = await ArticleOperation.count()
-    let { pageSize , pageNum } = ctx.query
-    let data = await ArticleOperation.find({},{__v:false,createDate:false}).skip((pageNum - 1) * pageSize).limit(Number(pageSize))
-    console.log(ctx.query , total,data)
+})
+// 文章浏览量增加
+router.get('/pageViewUpData',async (ctx)=>{
+    let article = await ArticleOperation.findOne({_id:ctx.query._id})
+
+    let data = await ArticleOperation.updateOne({_id:ctx.query._id},{pageView:Number(article.pageView+1)})
+    // console.log(ctx.query,article,data)
     ctx.body = {
         code:200,
-        data:{
-            total,
-        }
+        data:'2222'
     }
 })
 // 删除文章
@@ -96,7 +124,7 @@ router.post('/upLoadImgMany',upload.array('img'), async (ctx)=>{
     ctx.body = {
         code:200,
         data:{
-            imgUrl:`${URL}/images/blog-thumbnail/${files[0].filename}`,
+            imgUrl:`${BaseUrl}/images/blog-thumbnail/${files[0].filename}`,
             files,
         }
     }
@@ -109,7 +137,7 @@ router.post('/upLoadImg',upload.single('img'), async (ctx)=>{
     ctx.body = {
         code:200,
         data:{
-            imgUrl:`${URL}/images/blog-thumbnail/${file.filename}`
+            imgUrl:`${BaseUrl}/images/blog-thumbnail/${file.filename}`
         }
     }
 })

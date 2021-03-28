@@ -4,7 +4,8 @@ const MyMongo = require('../mongoose')
 const {mongoose , db} = MyMongo()
 /* 
     type:
-    '1' : 文章分类
+    '1' : 文章分类,
+    '2' : 博客信息
 */
 
 /* 
@@ -17,7 +18,10 @@ let articleScheam = mongoose.Schema({
     createDate:{
         type:String,
         default:String(new Date().getTime())
-    }
+    },
+    userImg:String,
+    userTitle:String,
+    userDesc:String
 },{
      collation: { locale: 'en_US', strength: 1 }
 })

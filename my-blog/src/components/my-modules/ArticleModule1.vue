@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="desc">
-                    {{articleInfo.articleContent}}
+                    {{clearLabel(articleInfo.articleContent)}}
                 </div>
             </div>
         </template>
@@ -42,12 +42,11 @@ export default {
             }
         }
     },
-    mounted() {
-        // let data = new Date().getTime();
-        // console.log(formateUnix(data), data);
-    },
     methods: {
         formateUnix,
+        clearLabel(str){
+            return str.replace(/<[^>]+>/g,"").replace(/&nbsp;/g,'').replace(/\/\//g,'').replace(/#/g,'');
+        },
     },
 };
 </script>
@@ -82,6 +81,7 @@ $imgWidth: 250px;
         }
     }
     .article-container {
+        min-width: 200px;
         padding: 25px;
         box-sizing: border-box;
         width: calc(100% - #{$imgWidth});

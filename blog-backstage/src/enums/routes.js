@@ -28,4 +28,9 @@ export default   [
             }
         ]
     },
+    {
+        title:'个人信息',
+        path:'/bloginfo',
+        icon:'el-icon-s-tools',
+    }
 ]

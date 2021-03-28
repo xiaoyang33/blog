@@ -69,4 +69,19 @@ export default {
             params:options
         })
     },
+    // 个人信息操作
+    saveInfo(options){
+        return request({
+            url:'/other/saveInfo',
+            method:'get',
+            params:options
+        })
+    },
+    getUserInfo(options){
+        return request({
+            url:'/other/getUserInfo',
+            method:'get',
+            params:options
+        })
+    }
 }

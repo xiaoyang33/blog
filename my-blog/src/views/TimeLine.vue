@@ -4,7 +4,7 @@
         <div class="time-line">
             <div class="time-title">已经完成了{{query.total}}篇博客,要继续加油哟</div>
             <div class="article-box">
-                <div class="time-article" v-for="item in article" :key="item._id">
+                <div class="time-article" v-for="item in article" :key="item._id"  @click="goArticle(item)">
                     <div class="item">
                         <img :src="item.thumbnail" alt="" />
                         <div>
@@ -44,14 +44,23 @@ export default {
     created(){
         this.initList()
     },
+    beforeRouteUpdate (to,from,next){
+        // console.log(to)
+        this.initList()
+        next()
+    },
     methods:{
         formateUnix,
         initList(){
-            operations.getArticle({...this.query}).then((res) => {
+             let classIfy = this.$route.query.classIfy
+            if(classIfy) this.title = classIfy
+            operations.getArticle({...this.query,classIfy}).then((res) => {
                 this.query.total = res.data.total
                 this.article = res.data.data
-                // console.log(res,this.article,this.query);
             });
+        },
+        goArticle(item){
+            this.$router.push('/article/' + item._id)
         }
     }
 };

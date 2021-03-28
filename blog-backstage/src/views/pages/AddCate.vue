@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import operation from "../../api/operations";
+import operation from "@/api/operations";
 export default {
     data() {
         return {
