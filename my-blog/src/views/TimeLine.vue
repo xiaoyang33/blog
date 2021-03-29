@@ -6,7 +6,7 @@
             <div class="article-box">
                 <div class="time-article" v-for="item in article" :key="item._id"  @click="goArticle(item)">
                     <div class="item">
-                        <img :src="item.thumbnail" alt="" />
+                        <img :src="item.thumbnail || require('../assets/img/6.jpg')" alt="" />
                         <div>
                             <p class="article-title">{{item.articleTitle}}</p>
                             <p><i class="el-icon-date"></i>{{formateUnix(item.createDate)}}</p>

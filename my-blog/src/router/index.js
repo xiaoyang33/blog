@@ -27,7 +27,12 @@ const routes = [
         path:'/article/:id',
         name:"Article",
         component:()=>import('../views/Article.vue')
-      }
+      },
+      {
+        path:'otherlink',
+        name:"OtherLink",
+        component:()=>import('../views/OtherLink.vue')
+      },
     ]
   }
 ]

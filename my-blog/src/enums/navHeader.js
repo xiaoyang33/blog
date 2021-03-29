@@ -25,6 +25,6 @@ export default [
     {
         icon1:'el-icon-cherry',
         title:'友链',
-        path:''
+        path:'/otherlink'
     }
 ]

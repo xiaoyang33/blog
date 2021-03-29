@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="aside">
         <div class="head">
             <div class="title-img">
-                <img :src="userInfo.userImg" alt="" />
+                <img :src="userInfo.userImg || require('../../assets/img/6.jpg')" alt="" />
             </div>
         </div>
         <div class="container">
@@ -47,7 +47,7 @@ export default {
         },
         getUserInfo(){
             operstion.getUserInfo().then(res=>{
-                // console.log(res);
+                console.log(res);
                 Object.assign(this.userInfo,res.data.user)
                 this.totalArticle = res.data.total
                 this.classIfyNum = res.data.classIfyNum
@@ -58,6 +58,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.aside{
+    // border: 1px solid;
+    height: 100%;
+    box-sizing: border-box;
+    box-shadow: 2px 3px 10px 2px #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    animation: floating 5s linear infinite;
+}
 .head {
     height: 180px;
     background: #4d4d4d;
@@ -115,6 +124,19 @@ export default {
                 color: rgb(119, 101, 60);
             }
         }
+    }
+}
+@keyframes floating {
+    0% {
+      transform: translateY(0px);
+    }33%{
+         transform: translateY(-10px);
+    }
+    70%{
+         transform: translateY(10px);
+    }
+    100%{
+         transform: translateY(0px);
     }
 }
 </style>

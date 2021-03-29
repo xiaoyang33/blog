@@ -3,7 +3,6 @@ const router = require('koa-router')()
 const ArticleOperation = require('../../mongoose/backStage/Operations')
 const upload = require('../../utils/upLoadImg')
 const {BaseUrl} = require('../../baseApi')  //测试地址
-const { get } = require('mongoose')
 // 保存文章
 router.post('/saveArticle',async (ctx)=>{
     let query = ctx.request.body

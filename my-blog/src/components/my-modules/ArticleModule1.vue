@@ -2,7 +2,7 @@
     <div class="container">
         <template v-for="item in sort">
             <div class="img" :key="item" v-if="item == '1'">
-                <img src="~@/assets/img/6.jpg" alt="" />
+                <img :src="item.thumbnail || require('../../assets/img/6.jpg')" alt="" />
             </div>
             <div class="article-container" :key="item"  v-if="item == '2'">
                 <h3>{{articleInfo.articleTitle}}</h3>

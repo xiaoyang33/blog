@@ -182,7 +182,8 @@ export default {
         if(_id){
             operation.findArticle({_id}).then((res) => {
                 if(res.code === 200){
-                    Object.assign(this.content,res.data[0])
+                    Object.assign(this.content,res.data.data[0])
+                    console.log(this.content)
                 }
             });
         }
@@ -282,22 +283,22 @@ h3 {
 }
 /deep/ .ql-editor{
          h1{
-            font-size: 48px;
-        }
-        h2{
-            font-size: 44px;
-        }
-        h3{
             font-size: 40px;
         }
+        h2{
+            font-size: 34px;
+        }
+        h3{
+            font-size: 28px;
+        }
         h4{
-            font-size: 36px;
+            font-size: 26px;
         }
         h5{
-            font-size: 32px;
+            font-size: 24px;
         }
         h6{
-            font-size: 28px;
+            font-size: 20px;
         }
 }
 .avatar-uploader {

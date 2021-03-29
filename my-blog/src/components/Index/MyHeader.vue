@@ -104,7 +104,8 @@ $liWidth: 73px;
     width: 100%;
     height: 100%;
     padding: 0 20px;
-    background: #ccc;
+    color: #eee;
+    background: rgb(183, 216, 230);
     .title{
         flex-shrink: 0;
     }
