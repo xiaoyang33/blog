@@ -25,7 +25,7 @@
                         <template v-if="item.icon2">
                             <i :class="item.icon2"></i>
                             <ul class="floating">
-                                <li v-for="ite in cate" :key="ite.articleClassIfy" @click="goTimeLine(ite)">
+                                <li v-for="ite in cate" :key="ite.articleClassIfy" @click.stop="goTimeLine(ite)">
                                     {{ ite.articleClassIfy }}
                                 </li>
                             </ul>
@@ -154,7 +154,6 @@ $liWidth: 73px;
                 left: 0;
                 opacity: 1;
                 transition: 0.3s;
-                visibility: visible;
             }
             // 下面的箭头翻转
             &.overturn:hover {
@@ -177,8 +176,6 @@ $liWidth: 73px;
         display: flex;
         width: 100%;
         opacity: 0;
-        visibility: hidden;
-        // visibility: hidden;
         flex-direction: column;
         align-items: center;
         justify-content: center;

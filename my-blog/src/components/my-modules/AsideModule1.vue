@@ -7,7 +7,7 @@
            <slot name="content">
                 <ul class="article-list">
                 <li v-for="i in 3" :key="i">
-                    <img src="../../assets/img/wor1.jpg" alt="" />
+                    <img src="../../assets/img/6.jpg" alt="" />
                     <div>
                         <p>Vue使用asfhsahjgfjhsagfhajsgfsahjgfsahjgfahjsgfhj</p>
                         <p>2020-12-09</p>

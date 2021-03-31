@@ -1,12 +1,12 @@
-<template>
-    <div class="time-box">
+<template >
+    <div class="time-box"  v-if="!reLoad">
         <div class="title">{{ title }}</div>
         <div class="time-line">
             <div class="time-title">已经完成了{{query.total}}篇博客,要继续加油哟</div>
             <div class="article-box">
                 <div class="time-article" v-for="item in article" :key="item._id"  @click="goArticle(item)">
                     <div class="item">
-                        <img :src="item.thumbnail || require('../assets/img/6.jpg')" alt="" />
+                        <img :src="item.thumbnail || require('../assets/img/html.png')" alt="" />
                         <div>
                             <p class="article-title">{{item.articleTitle}}</p>
                             <p><i class="el-icon-date"></i>{{formateUnix(item.createDate)}}</p>
@@ -34,19 +34,26 @@ export default {
                 pageSize: 6,
                 total: 0,
             },
+            reLoad:false
         };
     },
      watch:{
         'query.pageNum'(){
             this.initList();
+        },
+        $route(){
+         this.initList()
         }
     },
     created(){
         this.initList()
     },
     beforeRouteUpdate (to,from,next){
-        // console.log(to)
-        this.initList()
+        // 销毁组件重新渲染
+        this.reLoad = true
+         this.$nextTick(()=>{
+             this.reLoad = false
+         }) 
         next()
     },
     methods:{

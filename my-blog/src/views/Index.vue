@@ -113,7 +113,7 @@ export default {
 }
 .fold-left-enter-active {
     animation-name: fold-left-in;
-    animation-duration: .4s;
+    animation-duration: .5s;
 }
 @keyframes fold-left-in {
     0% {
