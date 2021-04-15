@@ -6,11 +6,11 @@
         <div class="main">
            <slot name="content">
                 <ul class="article-list">
-                <li v-for="i in 3" :key="i">
+                <li v-for="item in article" :key="item._id">
                     <img src="../../assets/img/6.jpg" alt="" />
                     <div>
-                        <p>Vue使用asfhsahjgfjhsagfhajsgfsahjgfsahjgfahjsgfhj</p>
-                        <p>2020-12-09</p>
+                        <p>{{item.articleTitle}}</p>
+                        <p>{{formateUnix( item.createDate) }}</p>
                     </div>
                 </li>
             </ul>
@@ -20,12 +20,24 @@
 </template>
 
 <script>
+import { formateUnix } from "@/utils/formateDay";
 export default {
+    props:{
+        article:{
+            type:Array,
+            default(){
+                return []
+            }
+        }
+    },
     data() {
         return {
             title: "标题1",
         };
     },
+    methods:{
+        formateUnix
+    }
 };
 </script>
 

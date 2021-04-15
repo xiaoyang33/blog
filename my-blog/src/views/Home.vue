@@ -11,7 +11,7 @@
             <pagination :pageNum.sync="query.pageNum" :pageSize="query.pageSize" :total="query.total"/>
         </div>
         <div class="aside">
-            <aside-module-1>
+            <aside-module-1 :article="article">
                 <template v-slot:title>
                     推荐文章
                 </template>
