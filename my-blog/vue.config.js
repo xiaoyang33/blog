@@ -35,14 +35,5 @@ module.exports = {
           }
         }
       }
-    },
-    css:{
-      loderOptions:{
-        sass:{
-          prependData:`
-            @import "@/assets/css/theme.scss"
-          `
-        }
-      }
     }
   }
